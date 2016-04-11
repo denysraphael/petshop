@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.upe.petshop.exceptions;
+package br.upe.petshop.negocios;
 
-import br.upe.petshop.exceptions.ClassificacaoPetInexistenteException;
-import br.upe.petshop.exceptions.ClassificacaoPetExistenteException;
 import br.upe.petshop.entidades.ClassificacaoPet;
-import br.upe.petshop.entidades.Cliente;
+import br.upe.petshop.exceptions.ClassificacaoPetExistenteException;
+import br.upe.petshop.exceptions.ClassificacaoPetInexistenteException;
 import java.io.Serializable;
 import java.util.List;
 
