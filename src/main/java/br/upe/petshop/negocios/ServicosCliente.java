@@ -8,6 +8,7 @@ package br.upe.petshop.negocios;
 import br.upe.petshop.exceptions.ClienteInexistenteException;
 import br.upe.petshop.exceptions.ClienteExistenteException;
 import br.upe.petshop.entidades.Cliente;
+import br.upe.petshop.listar.ClienteListar;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,10 +17,10 @@ import java.util.List;
  * @author -Denys
  */
 public interface ServicosCliente extends Serializable {
-    public void cadastrarCliente(Cliente cliente) throws ClienteExistenteException;
-    public void atualizarCliente(Cliente cliente) throws ClienteInexistenteException;
+    public void cadastrarCliente(Cliente cliente) throws ClienteExistenteException,ClienteInexistenteException;
+    public void atualizarCliente(Cliente cliente, String cpf) throws ClienteInexistenteException;
     public void excluirCliente(String cpf) throws ClienteInexistenteException;
-    public List<Cliente> listarTodos();
+    public List<ClienteListar> listarTodos();
     public Cliente BuscarPorCpf(String cpf) throws ClienteInexistenteException;
-    public List<Cliente> BuscarPorNome(String nome);
+    public List<ClienteListar> BuscarPorNome(String nome);
 }
