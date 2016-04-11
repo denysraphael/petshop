@@ -5,6 +5,8 @@
  */
 package br.upe.petshop.negocios;
 
+import br.upe.petshop.exceptions.CompraInexistenteException;
+import br.upe.petshop.exceptions.CompraExistenteException;
 import br.upe.petshop.entidades.Compra;
 import java.io.Serializable;
 import java.util.List;

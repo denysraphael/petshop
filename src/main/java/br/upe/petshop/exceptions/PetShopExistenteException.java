@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.upe.petshop.negocios;
+package br.upe.petshop.exceptions;
 
 /**
  *
  * @author -Denys
  */
-public class ServicoInexistenteException extends Exception {
+public class PetShopExistenteException extends Exception {
     
 }
