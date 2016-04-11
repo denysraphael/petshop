@@ -7,6 +7,7 @@ package br.upe.petshop.entidades;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -101,5 +102,54 @@ public class Pet implements Serializable{
         this.ativo = ativo;
     }
 
-   
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.codigo);
+        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.classificacao);
+        hash = 97 * hash + Objects.hashCode(this.raca);
+        hash = 97 * hash + Objects.hashCode(this.dono);
+        hash = 97 * hash + Objects.hashCode(this.servicos);
+        hash = 97 * hash + (this.ativo ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pet other = (Pet) obj;
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.classificacao, other.classificacao)) {
+            return false;
+        }
+        if (!Objects.equals(this.raca, other.raca)) {
+            return false;
+        }
+        if (!Objects.equals(this.dono, other.dono)) {
+            return false;
+        }
+        if (!Objects.equals(this.servicos, other.servicos)) {
+            return false;
+        }
+        if (this.ativo != other.ativo) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Pet{" + "codigo=" + codigo + ", nome=" + nome + ", classificacao=" + classificacao + ", raca=" + raca + ", dono=" + dono + ", servicos=" + servicos + ", ativo=" + ativo + '}';
+    }
 }

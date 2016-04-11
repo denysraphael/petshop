@@ -78,7 +78,7 @@ public class Cliente implements Serializable{
         this.telefone = telefone;
     }
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "dono")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "dono")
     public List<Pet> getPets() {
         return pets;
     }

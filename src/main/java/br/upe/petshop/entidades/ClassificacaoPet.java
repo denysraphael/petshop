@@ -5,8 +5,11 @@
  */
 package br.upe.petshop.entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +20,8 @@ import javax.persistence.OneToMany;
  *
  * @author -Denys
  */
-public class ClassificacaoPet {
+@Entity
+public class ClassificacaoPet implements Serializable {
     private Long codigo;
     private String descricao;
     private List<Raca> racas;
@@ -68,5 +72,42 @@ public class ClassificacaoPet {
         this.pets = pets;
     }
 
-   
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.codigo);
+        hash = 83 * hash + Objects.hashCode(this.descricao);
+        hash = 83 * hash + Objects.hashCode(this.racas);
+        hash = 83 * hash + Objects.hashCode(this.pets);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ClassificacaoPet other = (ClassificacaoPet) obj;
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.racas, other.racas)) {
+            return false;
+        }
+        if (!Objects.equals(this.pets, other.pets)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "ClassificacaoPet{" + "codigo=" + codigo + ", descricao=" + descricao + ", racas=" + racas + ", pets=" + pets + '}';
+    }
 }

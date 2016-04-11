@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,11 +31,12 @@ public class Servico implements Serializable{
     private Date dia;
     private Date hora;
     private boolean ativo;
+    private Compra compra;
 
     public Servico() {
     }
     
-    public Servico(String tipoServico, PetShop petShop, Double valor, Pet pet, Date dia, Date hora) {
+    public Servico(String tipoServico, PetShop petShop, Double valor, Pet pet, Date dia, Date hora, Compra compra) {
         this.tipoServico = tipoServico;
         this.petShop = petShop;
         this.valor = valor;
@@ -41,6 +44,7 @@ public class Servico implements Serializable{
         this.dia = dia;
         this.hora = hora;
         this.ativo = true;
+        this.compra = compra;
     }
 
     @Id
@@ -87,6 +91,7 @@ public class Servico implements Serializable{
         this.pet = pet;
     }
 
+    @Temporal(TemporalType.DATE)
     public Date getDia() {
         return dia;
     }
@@ -95,6 +100,7 @@ public class Servico implements Serializable{
         this.dia = dia;
     }
 
+    @Temporal(TemporalType.TIME)
     public Date getHora() {
         return hora;
     }
@@ -111,17 +117,27 @@ public class Servico implements Serializable{
         this.ativo = ativo;
     }
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.codigo);
-        hash = 53 * hash + Objects.hashCode(this.tipoServico);
-        hash = 53 * hash + Objects.hashCode(this.petShop);
-        hash = 53 * hash + Objects.hashCode(this.valor);
-        hash = 53 * hash + Objects.hashCode(this.pet);
-        hash = 53 * hash + Objects.hashCode(this.dia);
-        hash = 53 * hash + Objects.hashCode(this.hora);
-        hash = 53 * hash + (this.ativo ? 1 : 0);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.codigo);
+        hash = 97 * hash + Objects.hashCode(this.tipoServico);
+        hash = 97 * hash + Objects.hashCode(this.petShop);
+        hash = 97 * hash + Objects.hashCode(this.valor);
+        hash = 97 * hash + Objects.hashCode(this.pet);
+        hash = 97 * hash + Objects.hashCode(this.dia);
+        hash = 97 * hash + Objects.hashCode(this.hora);
+        hash = 97 * hash + (this.ativo ? 1 : 0);
+        hash = 97 * hash + Objects.hashCode(this.compra);
         return hash;
     }
 
@@ -158,11 +174,14 @@ public class Servico implements Serializable{
         if (this.ativo != other.ativo) {
             return false;
         }
+        if (!Objects.equals(this.compra, other.compra)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Servico{" + "codigo=" + codigo + ", tipoServico=" + tipoServico + ", petShop=" + petShop + ", valor=" + valor + ", pet=" + pet + ", dia=" + dia + ", hora=" + hora + ", ativo=" + ativo + '}';
+        return "Servico{" + "codigo=" + codigo + ", tipoServico=" + tipoServico + ", petShop=" + petShop + ", valor=" + valor + ", pet=" + pet + ", dia=" + dia + ", hora=" + hora + ", ativo=" + ativo + ", compra=" + compra + '}';
     }
 }

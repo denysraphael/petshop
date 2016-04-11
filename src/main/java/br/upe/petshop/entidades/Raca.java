@@ -5,9 +5,11 @@
  */
 package br.upe.petshop.entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +21,8 @@ import javax.persistence.OneToMany;
  *
  * @author -Denys
  */
-public class Raca {
+@Entity
+public class Raca implements Serializable {
     private Long Codigo;
     private String descricao;
     private ClassificacaoPet classificacao;
