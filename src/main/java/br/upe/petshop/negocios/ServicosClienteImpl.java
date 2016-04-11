@@ -36,7 +36,7 @@ public class ServicosClienteImpl implements ServicosCliente {
                 c.setNome(cliente.getNome());
                 c.setEndereco(cliente.getEndereco());
                 c.setTelefone(cliente.getTelefone());
-                c.setSenha(c.getSenha());
+                c.setSenha(cliente.getSenha());
                 atualizarCliente(c, c.getCpf());
                 
             }else{
@@ -70,8 +70,9 @@ public class ServicosClienteImpl implements ServicosCliente {
     @Transactional(rollbackFor = ClienteInexistenteException.class)
     public void excluirCliente(String cpf) throws ClienteInexistenteException {
         Cliente clienteAtualizar = repositorioCliente.findOne(cpf);
-        if(clienteAtualizar==null)
+        if(clienteAtualizar==null){
             throw new ClienteInexistenteException();
+        }
         clienteAtualizar.setAtivo(false);
         repositorioCliente.save(clienteAtualizar);
     }

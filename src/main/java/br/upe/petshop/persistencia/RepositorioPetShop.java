@@ -15,5 +15,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author -Denys
  */
 public interface RepositorioPetShop extends CrudRepository<PetShop, String>{
-    public List<Cliente> findByNome(String nome);  
+    public List<PetShop> findByNome(String nome);  
 }
