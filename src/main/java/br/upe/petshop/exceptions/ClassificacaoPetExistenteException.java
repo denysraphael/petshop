@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.upe.petshop.persistencia;
-
-import br.upe.petshop.entidades.Compra;
-import org.springframework.data.repository.CrudRepository;
+package br.upe.petshop.exceptions;
 
 /**
  *
  * @author -Denys
  */
-public interface RepositorioCompra extends CrudRepository<Compra, Long> {
+public class ClassificacaoPetExistenteException extends Exception {
     
 }

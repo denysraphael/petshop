@@ -5,13 +5,13 @@
  */
 package br.upe.petshop.persistencia;
 
-import br.upe.petshop.entidades.Compra;
+import br.upe.petshop.entidades.ClassificacaoPet;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author -Denys
  */
-public interface RepositorioCompra extends CrudRepository<Compra, Long> {
+public interface RepositorioClassificacaoPet  extends CrudRepository<ClassificacaoPet, Long>{
     
 }

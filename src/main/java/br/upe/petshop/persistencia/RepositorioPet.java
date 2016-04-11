@@ -17,8 +17,10 @@ import org.springframework.data.repository.query.Param;
  */
 public interface RepositorioPet  extends CrudRepository<Pet, Long> {
     public List<Pet> findByNome (String nome);
-    public List<Pet> findByTipo (String tipo);
-    public List<Pet> findByRaca (String raca);
+    @Query("select p from Pet p where p.classificacao.descricao=:classificacao")
+    public List<Pet> findByClassificacao(@Param("classificacao") String classificacao);
+    @Query("select p from Pet p where p.raca.descricao=:raca")
+    public List<Pet> findByRaca (@Param("raca") String raca);
     @Query("select p from Pet p where p.dono.nome=:nomeDono")
     public List<Pet> findByDono(@Param("nomeDono") String nomeDono);   
 }

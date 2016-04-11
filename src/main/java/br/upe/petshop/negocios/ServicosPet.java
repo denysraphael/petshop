@@ -16,7 +16,7 @@ import java.util.List;
  * @author -Denys
  */
 public interface ServicosPet extends Serializable{
-    public void cadastrarPet(Pet pet) throws PetExistenteException;
+    public void cadastrarPet(Pet pet) throws PetExistenteException, PetInexistenteException;
     public void atualizarPet(Pet pet) throws PetInexistenteException;
     public void excluirPet(String codigo) throws PetInexistenteException;
     public List<Pet> listarTodos();
