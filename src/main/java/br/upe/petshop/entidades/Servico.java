@@ -33,14 +33,14 @@ public class Servico implements Serializable{
     public Servico() {
     }
     
-    public Servico(String tipoServico, PetShop petShop, Double valor, Pet pet, Date dia, Date hora, boolean ativo) {
+    public Servico(String tipoServico, PetShop petShop, Double valor, Pet pet, Date dia, Date hora) {
         this.tipoServico = tipoServico;
         this.petShop = petShop;
         this.valor = valor;
         this.pet = pet;
         this.dia = dia;
         this.hora = hora;
-        this.ativo = ativo;
+        this.ativo = true;
     }
 
     @Id

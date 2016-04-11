@@ -6,6 +6,7 @@
 package br.upe.petshop.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -37,20 +38,19 @@ public class PetShop implements Serializable{
     public PetShop() {
     }
 
-    public PetShop(String cnpj, String nome, String endereco, String telefone, boolean banho, boolean banhoHidratacao, boolean tosaHigienica, boolean tosaBebe, boolean tosaRaca, boolean consulta, boolean busca, List<Servico> servicos, boolean ativo, String senha) {
+    public PetShop(String cnpj, String nome, String endereco, String telefone, String senha) {
         this.cnpj = cnpj;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
-        this.banho = banho;
-        this.banhoHidratacao = banhoHidratacao;
-        this.tosaHigienica = tosaHigienica;
-        this.tosaBebe = tosaBebe;
-        this.tosaRaca = tosaRaca;
-        this.consulta = consulta;
-        this.busca = busca;
-        this.servicos = servicos;
-        this.ativo = ativo;
+        this.banho = false;
+        this.banhoHidratacao = false;
+        this.tosaHigienica = false;
+        this.tosaBebe = false;
+        this.tosaRaca = false;
+        this.consulta = false;
+        this.busca = false;
+        this.ativo = true;
         this.senha = senha;
     }
     

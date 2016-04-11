@@ -23,6 +23,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Pet implements Serializable{
     private Long codigo;
+    private String nome;
     private String tipo;
     private String raca;
     private String tamanho;
@@ -33,13 +34,12 @@ public class Pet implements Serializable{
     public Pet() {
     }
 
-    public Pet(String tipo, String raca, String tamanho, Cliente dono, List<Servico> servicos, boolean ativo) {
+    public Pet(String nome, String tipo, String raca, String tamanho) {
+        this.nome = nome;
         this.tipo = tipo;
         this.raca = raca;
         this.tamanho = tamanho;
-        this.dono = dono;
-        this.servicos = servicos;
-        this.ativo = ativo;
+        this.ativo = true;
     }
 
     @Id
@@ -50,6 +50,14 @@ public class Pet implements Serializable{
 
     public void setCodigo(Long codigo) {
         this.codigo = codigo;
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getTipo() {
@@ -105,13 +113,14 @@ public class Pet implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.codigo);
-        hash = 79 * hash + Objects.hashCode(this.tipo);
-        hash = 79 * hash + Objects.hashCode(this.raca);
-        hash = 79 * hash + Objects.hashCode(this.tamanho);
-        hash = 79 * hash + Objects.hashCode(this.dono);
-        hash = 79 * hash + Objects.hashCode(this.servicos);
-        hash = 79 * hash + (this.ativo ? 1 : 0);
+        hash = 37 * hash + Objects.hashCode(this.codigo);
+        hash = 37 * hash + Objects.hashCode(this.nome);
+        hash = 37 * hash + Objects.hashCode(this.tipo);
+        hash = 37 * hash + Objects.hashCode(this.raca);
+        hash = 37 * hash + Objects.hashCode(this.tamanho);
+        hash = 37 * hash + Objects.hashCode(this.dono);
+        hash = 37 * hash + Objects.hashCode(this.servicos);
+        hash = 37 * hash + (this.ativo ? 1 : 0);
         return hash;
     }
 
@@ -125,6 +134,9 @@ public class Pet implements Serializable{
         }
         final Pet other = (Pet) obj;
         if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
         if (!Objects.equals(this.tipo, other.tipo)) {
@@ -150,6 +162,6 @@ public class Pet implements Serializable{
 
     @Override
     public String toString() {
-        return "Pet{" + "codigo=" + codigo + ", tipo=" + tipo + ", raca=" + raca + ", tamanho=" + tamanho + ", dono=" + dono + ", servicos=" + servicos + ", ativo=" + ativo + '}';
+        return "Pet{" + "codigo=" + codigo + ", nome=" + nome + ", tipo=" + tipo + ", raca=" + raca + ", tamanho=" + tamanho + ", dono=" + dono + ", servicos=" + servicos + ", ativo=" + ativo + '}';
     }
 }

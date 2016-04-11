@@ -29,14 +29,14 @@ public class Compra implements Serializable{
     private boolean ativo;
 
     public Compra() {
+        this.ativo = true;
     }
 
    
-    public Compra(Cliente cliente, List<Servico> servicos, Double precoTotal, boolean ativo) {
-        this.cliente = cliente;
+    public Compra(Cliente cliente, List<Servico> servicos, Double precoTotal) {
         this.servicos = servicos;
         this.precoTotal = precoTotal;
-        this.ativo = ativo;
+        this.ativo = true;
     }
 
     @Id
