@@ -24,7 +24,6 @@ import javax.persistence.OneToMany;
 public class Pet implements Serializable{
     private Long codigo;
     private String nome;
-    private ClassificacaoPet classificacao;
     private Raca raca;
     private Cliente dono;
     private List<Servico> servicos;
@@ -33,9 +32,8 @@ public class Pet implements Serializable{
     public Pet() {
     }
 
-    public Pet(String nome, ClassificacaoPet classificacao, Raca raca, String tamanho) {
+    public Pet(String nome, Raca raca) {
         this.nome = nome;
-        this.classificacao = classificacao;
         this.raca = raca;
         this.ativo = true;
     }
@@ -56,15 +54,6 @@ public class Pet implements Serializable{
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    @ManyToOne (fetch = FetchType.EAGER)
-    public ClassificacaoPet getClassificacao() {
-        return classificacao;
-    }
-
-    public void setClassificacao(ClassificacaoPet classificacao) {
-        this.classificacao = classificacao;
     }
 
     @ManyToOne (fetch = FetchType.EAGER)
@@ -107,7 +96,6 @@ public class Pet implements Serializable{
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.codigo);
         hash = 97 * hash + Objects.hashCode(this.nome);
-        hash = 97 * hash + Objects.hashCode(this.classificacao);
         hash = 97 * hash + Objects.hashCode(this.raca);
         hash = 97 * hash + Objects.hashCode(this.dono);
         hash = 97 * hash + Objects.hashCode(this.servicos);
@@ -130,9 +118,6 @@ public class Pet implements Serializable{
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        if (!Objects.equals(this.classificacao, other.classificacao)) {
-            return false;
-        }
         if (!Objects.equals(this.raca, other.raca)) {
             return false;
         }
@@ -150,6 +135,6 @@ public class Pet implements Serializable{
 
     @Override
     public String toString() {
-        return "Pet{" + "codigo=" + codigo + ", nome=" + nome + ", classificacao=" + classificacao + ", raca=" + raca + ", dono=" + dono + ", servicos=" + servicos + ", ativo=" + ativo + '}';
+        return "Pet{" + "codigo=" + codigo + ", nome=" + nome + ", raca=" + raca + ", dono=" + dono + ", servicos=" + servicos + ", ativo=" + ativo + '}';
     }
 }

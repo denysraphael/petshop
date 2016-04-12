@@ -5,9 +5,9 @@
  */
 package br.upe.petshop.negocios;
 
-import br.upe.petshop.exceptions.RacaInexistenteException;
-import br.upe.petshop.exceptions.RacaExistenteException;
 import br.upe.petshop.entidades.Raca;
+import br.upe.petshop.exceptions.RacaExistenteException;
+import br.upe.petshop.exceptions.RacaInexistenteException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,10 +15,9 @@ import java.util.List;
  *
  * @author -Denys
  */
-public interface ServicosRaca extends Serializable {
-    public void cadastrarRaca(Raca raca) throws RacaExistenteException,RacaInexistenteException;
-    public void atualizarRaca(Raca raca) throws RacaInexistenteException;
-    public void excluirRaca(Long codigo) throws RacaInexistenteException;
+public interface ServicosRaca extends Serializable{
+    public void cadastrar(Raca raca) throws RacaExistenteException;
+    public void atualizar(String nomeAtual, String nomeAtualizar) throws RacaInexistenteException;
     public List<Raca> listarTodos();
-    public List<Raca> BuscarPorClassificacao(String classificacao);   
+    public Raca consultarPorNome(String nome) throws RacaInexistenteException;
 }

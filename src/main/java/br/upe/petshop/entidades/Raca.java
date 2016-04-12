@@ -5,80 +5,46 @@
  */
 package br.upe.petshop.entidades;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author -Denys
  */
-@Entity
-public class Raca implements Serializable {
-    private Long Codigo;
-    private String descricao;
-    private ClassificacaoPet classificacao;
-    private List<Pet> pets;
+public class Raca {
+    private Long codigo;
+    private String nome;
 
-    public Raca(String descricao) {
-        this.descricao = descricao;
-        this.pets = new ArrayList<Pet>();
-    }
-
-    public Raca() {
+    public Raca(String nome) {
+        this.nome = nome;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getCodigo() {
-        return Codigo;
+        return codigo;
     }
 
-    public void setCodigo(Long Codigo) {
-        this.Codigo = Codigo;
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "raca")
-    public List<Pet> getPets() {
-        return pets;
-    }
-
-    public void setPets(List<Pet> pets) {
-        this.pets = pets;
-    }
-
-    @ManyToOne (fetch = FetchType.EAGER)
-    public ClassificacaoPet getClassificacao() {
-        return classificacao;
-    }
-
-    public void setClassificacao(ClassificacaoPet classificacao) {
-        this.classificacao = classificacao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.Codigo);
-        hash = 47 * hash + Objects.hashCode(this.descricao);
-        hash = 47 * hash + Objects.hashCode(this.classificacao);
-        hash = 47 * hash + Objects.hashCode(this.pets);
+        hash = 73 * hash + Objects.hashCode(this.codigo);
+        hash = 73 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -91,16 +57,10 @@ public class Raca implements Serializable {
             return false;
         }
         final Raca other = (Raca) obj;
-        if (!Objects.equals(this.Codigo, other.Codigo)) {
+        if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
-        if (!Objects.equals(this.descricao, other.descricao)) {
-            return false;
-        }
-        if (!Objects.equals(this.classificacao, other.classificacao)) {
-            return false;
-        }
-        if (!Objects.equals(this.pets, other.pets)) {
+        if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
         return true;
@@ -108,6 +68,6 @@ public class Raca implements Serializable {
 
     @Override
     public String toString() {
-        return "Raca{" + "Codigo=" + Codigo + ", descricao=" + descricao + ", classificacao=" + classificacao + ", pets=" + pets + '}';
+        return "Raca{" + "codigo=" + codigo + ", nome=" + nome + '}';
     }
 }
